@@ -15,7 +15,7 @@ export interface PlaceholderMagicConfig {
 // Function to dynamically load the configuration file based on the environment.
 export const getConfig = async (): Promise<PlaceholderMagicConfig> => {
     // Determine the environment (default to 'dev' if not set).
-    const env = import.meta.env.VITE_PLACEHOLDER_MAGIC_ENV || 'dev';
+    const env = import.meta.env.PLACEHOLDER_MAGIC_ENV || 'dev';
     // Construct the configuration file name based on the environment.
     const configFileName = `placeholdermagic.config.${env}.json`;
   
