@@ -1,0 +1,16 @@
+{
+  // API endpoints used for development environment
+  "apiEndpoints": {
+    "getDatabases": "/api/v1/databases", // Endpoint to fetch databases
+    "getSchemas": "/api/v1/schemas",    // Endpoint to fetch schemas
+    "getTables": "/api/v1/tables",      // Endpoint to fetch tables
+    "getColumns": "/api/v1/columns"     // Endpoint to fetch columns
+  },
+  // Axios configuration for making HTTP requests
+  "axiosConfig": {
+    "baseURL": "https://dev.example.com", // Base URL for the development API
+    "headers": {
+      "Authorization": "Bearer YOUR_DEV_ACCESS_TOKEN" // Authorization token for development
+    }
+  }
+}

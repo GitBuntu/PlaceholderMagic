@@ -1,0 +1,23 @@
+{
+  // API endpoints for interacting with the backend services
+  "apiEndpoints": {
+    // Endpoint to fetch the list of databases
+    "getDatabases": "/api/v1/databases",
+    // Endpoint to fetch the list of schemas
+    "getSchemas": "/api/v1/schemas",
+    // Endpoint to fetch the list of tables
+    "getTables": "/api/v1/tables",
+    // Endpoint to fetch the list of columns
+    "getColumns": "/api/v1/columns"
+  },
+  // Axios configuration for making HTTP requests
+  "axiosConfig": {
+    // Base URL for the staging environment
+    "baseURL": "https://staging.example.com",
+    // Headers for authentication and other metadata
+    "headers": {
+      // Bearer token for accessing the staging API
+      "Authorization": "Bearer YOUR_STAGING_ACCESS_TOKEN"
+    }
+  }
+}
