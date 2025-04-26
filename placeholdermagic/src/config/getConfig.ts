@@ -14,23 +14,15 @@ export interface PlaceholderMagicConfig {
   
 // Function to dynamically load the configuration file based on the environment.
 export const getConfig = async (): Promise<PlaceholderMagicConfig> => {
-    // Determine the environment (default to 'dev' if not set).
+    // Determine the environment (default to 'dev' if not set)
     const env = import.meta.env.PLACEHOLDER_MAGIC_ENV || 'dev';
-    // Construct the configuration file name based on the environment.
-    const configFileName = `placeholdermagic.config.${env}.json`;
-  
+    
     try {
-      // Fetch the configuration file from the server.
-      const response = await fetch(`/${configFileName}`);
-      if (!response.ok) {
-        // Throw an error if the file cannot be loaded.
-        throw new Error(`Failed to load ${configFileName}`);
-      }
-      // Parse and return the configuration as a JSON object.
-      return await response.json();
+        // Import the configuration file dynamically
+        const config = await import(`../../../placeholdermagic.config.${env}.json`);
+        return config.default;
     } catch (error) {
-      // Log and rethrow any errors encountered during the fetch process.
-      console.error('Error loading configuration:', error);
-      throw error;
+        console.error('Error loading configuration:', error);
+        throw error;
     }
-  };
+};
