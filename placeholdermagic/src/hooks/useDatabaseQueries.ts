@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchColumns, fetchDatabases, fetchSchemas, fetchTables } from "../api/placeholderApi";
+import { fetchColumns, fetchDatabases, fetchPreviewData, fetchSchemas, fetchTables } from "../api/placeholderApi";
 
 // Fetch the list of databases from the API.
 export const useDatabases = () => {
@@ -29,3 +29,12 @@ export const useColumns = (database: string, schema: string, table: string) => {
     enabled: !!database && !!schema && !!table, // Only run the query if database, schema, and table are defined
   });
 }
+
+// Fetch preview data for a specific table
+export const usePreviewData = (database: string, schema: string, table: string) => {
+  return useQuery({
+    queryKey: ["previewData", database, schema, table],
+    queryFn: () => fetchPreviewData(database, schema, table),
+    enabled: !!database && !!schema && !!table,
+  });
+};
