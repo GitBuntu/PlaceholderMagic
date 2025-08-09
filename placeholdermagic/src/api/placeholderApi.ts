@@ -33,3 +33,17 @@ export const fetchColumns = async (database: string, schema: string, table: stri
     .replace('{table}', table));
   return data;
 };
+
+// Type for database row data
+export type DatabaseRow = Record<string, string | number | boolean | null>;
+
+export const fetchPreviewData = async (database: string, schema: string, table: string): Promise<DatabaseRow[]> => {
+  const axios = await getAxiosInstance();
+  const config = await getConfig();
+  const { data } = await axios.get(config.apiEndpoints.getPreviewData
+    .replace('{database}', database)
+    .replace('{schema}', schema)
+    .replace('{table}', table));
+  // Convert single row dictionary to array format
+  return data ? [data] : [];
+};
